@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
+<div class="auth-container login-container">
+    <h2>Log In</h2>
+
+    <!-- Display any messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Login Form -->
+    <form method="post" class="auth-form">
+        {% csrf_token %}
+
+        <!-- Display form-level errors (like invalid username/password) -->
+        {% if form.non_field_errors %}
+            <div class="message error">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <!-- Username Field -->
+        <div class="form-field">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            <input type="text" name="username" id="{{ form.username.id_for_label }}"
+                   placeholder="Username" required>
+            {% if form.username.errors %}
+                <div class="error-message">
+                    {{ form.username.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-field">
+            <label for="{{ form.password.id_for_label }}">Password:</label>
+            <input type="password" name="password" id="{{ form.password.id_for_label }}"
+                   placeholder="Password" required>
+            {% if form.password.errors %}
+                <div class="error-message">
+                    {{ form.password.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit btn-login">
+            Log In
+        </button>
+    </form>
+
+    <!-- Additional Links -->
+    <div class="auth-links">
+        <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+        <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
+    </div>
+</div>
+{% endblock %}

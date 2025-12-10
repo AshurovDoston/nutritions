@@ -117,3 +117,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+# Directory where Django looks for static files during development
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+
+# Authentication settings
+# Where to redirect after successful login
+LOGIN_REDIRECT_URL = "/"
+
+# Where to redirect after logout
+LOGOUT_REDIRECT_URL = "/"
+
+# Where to redirect if @login_required decorator is used
+LOGIN_URL = "/accounts/login/"

@@ -1,0 +1,131 @@
+/* Authentication Pages Styles (Login & Signup) */
+
+/* Form container */
+.auth-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.auth-container.login-container {
+    max-width: 400px;
+}
+
+/* Page heading */
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Message alerts */
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.message.success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Form styling */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form fields */
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Error messages */
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Help text */
+.help-text {
+    color: #6c757d;
+    font-size: 13px;
+}
+
+/* Submit buttons */
+.btn-submit {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: opacity 0.3s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+.btn-signup {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-login {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Additional links */
+.auth-links {
+    text-align: center;
+    margin-top: 20px;
+    color: #6c757d;
+}
+
+.auth-links p {
+    margin: 10px 0;
+}
+
+.auth-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}

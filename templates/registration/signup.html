@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
+<div class="auth-container">
+    <h2>Create an Account</h2>
+
+    <!-- Display any messages (success/error) -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Registration Form -->
+    <form method="post" class="auth-form">
+        {% csrf_token %}
+
+        <!-- Display form-level errors (like username already exists) -->
+        {% if form.non_field_errors %}
+            <div class="message error">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <!-- Username Field -->
+        <div class="form-field">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <div class="error-message">
+                    {{ form.username.errors }}
+                </div>
+            {% endif %}
+            {% if form.username.help_text %}
+                <small class="help-text">
+                    {{ form.username.help_text }}
+                </small>
+            {% endif %}
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-field">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <div class="error-message">
+                    {{ form.email.errors }}
+                </div>
+            {% endif %}
+            {% if form.email.help_text %}
+                <small class="help-text">
+                    {{ form.email.help_text }}
+                </small>
+            {% endif %}
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-field">
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <div class="error-message">
+                    {{ form.password1.errors }}
+                </div>
+            {% endif %}
+            {% if form.password1.help_text %}
+                <small class="help-text">
+                    {{ form.password1.help_text|safe }}
+                </small>
+            {% endif %}
+        </div>
+
+        <!-- Password Confirmation Field -->
+        <div class="form-field">
+            <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <div class="error-message">
+                    {{ form.password2.errors }}
+                </div>
+            {% endif %}
+            {% if form.password2.help_text %}
+                <small class="help-text">
+                    {{ form.password2.help_text }}
+                </small>
+            {% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit btn-signup">
+            Sign Up
+        </button>
+    </form>
+
+    <!-- Link to Login Page -->
+    <div class="auth-links">
+        <p>Already have an account? <a href="{% url 'login' %}">Log in here</a></p>
+    </div>
+</div>
+{% endblock %}

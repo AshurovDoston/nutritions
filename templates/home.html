@@ -1,7 +1,95 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Home - My Site{% endblock %}
+{% block title %}Home - Nutrition Tracker{% endblock %}
 
 {% block content %}
-    <p>This is the home page.</p>
-{% endblock content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+{% if user.is_authenticated %}
+    <!-- Content for logged-in users -->
+    <div class="dashboard">
+        <h2>Welcome back, {{ user.username }}! 👋</h2>
+        <p>Ready to track your nutrition today? Let's keep you on the path to better health.</p>
+
+        <div class="quick-actions">
+            <a href="#" class="quick-action-btn">Log Today's Meals</a>
+            <a href="#" class="quick-action-btn">View Progress</a>
+            <a href="#" class="quick-action-btn">Set Goals</a>
+        </div>
+    </div>
+
+    <!-- Features available to logged-in users -->
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Track Your Progress</h3>
+            <p>Monitor your daily nutrition intake and see your progress over time with detailed analytics.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🥗</div>
+            <h3>Meal Logging</h3>
+            <p>Easily log your meals and get instant nutritional information for everything you eat.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Set Goals</h3>
+            <p>Define your health goals and track your journey towards achieving them.</p>
+        </div>
+    </div>
+
+{% else %}
+    <!-- Content for non-logged-in users -->
+    <div class="hero">
+        <h1>Welcome to Nutrition Tracker</h1>
+        <p>Your personal companion for tracking nutrition and achieving your health goals</p>
+
+        <div class="cta-buttons">
+            <a href="{% url 'signup' %}" class="btn btn-primary">Get Started Free</a>
+            <a href="{% url 'login' %}" class="btn btn-secondary">Sign In</a>
+        </div>
+    </div>
+
+    <!-- Features section -->
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🍎</div>
+            <h3>Easy Food Logging</h3>
+            <p>Quickly log your meals and snacks with our intuitive interface. Track calories, macros, and micronutrients effortlessly.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📈</div>
+            <h3>Detailed Analytics</h3>
+            <p>Visualize your nutrition data with beautiful charts and graphs. Understand your eating patterns and make informed decisions.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Personal Goals</h3>
+            <p>Set custom goals tailored to your needs. Whether it's weight loss, muscle gain, or maintenance, we've got you covered.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💪</div>
+            <h3>Stay Motivated</h3>
+            <p>Track your progress over time and celebrate your achievements. See how far you've come on your health journey.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Privacy First</h3>
+            <p>Your data is secure and private. We take your privacy seriously and never share your information.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🌟</div>
+            <h3>Free Forever</h3>
+            <p>Start tracking your nutrition today with our free plan. No credit card required, no hidden fees.</p>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

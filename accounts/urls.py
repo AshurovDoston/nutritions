@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import account_view, current_datetime_view
+from .views import signup_view
 
 urlpatterns = [
-    path("", account_view, name="home"),
-    path("time/", current_datetime_view, name="current_datetime"),
+    # Signup page - /accounts/signup/
+    path("signup/", signup_view, name="signup"),
 ]
