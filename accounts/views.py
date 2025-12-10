@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 import datetime
 
-def home_view(request):
-    return HttpResponse("Welcome to my first page!")
+def account_view(request):
+    return HttpResponse("Welcome to the account page!")
 
 
 def current_datetime_view(request):
